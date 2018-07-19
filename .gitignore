@@ -1,2 +1,5 @@
 # ignore all data files
-data/
+data/*
+
+# ignore log files
+*log*
