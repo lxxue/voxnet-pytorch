@@ -2,4 +2,4 @@
 data/*
 
 # ignore log files
-*log*
+*log*/
