@@ -114,7 +114,7 @@ def load_checkpoint(args, model):
     best_acc = checkpoint['best_acc']
     start_epoch = checkpoint['epoch']
     model.body.load_state_dict(checkpoint['body'])
-    model.head.load_state_dict(checkpoint['body'])
+    model.head.load_state_dict(checkpoint['head'])
 
     return start_epoch, best_acc
 
