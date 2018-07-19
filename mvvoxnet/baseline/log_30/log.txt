@@ -1,0 +1,520 @@
+Namespace(batch_size=8, ckpt_dir='log', ckpt_fname='model', cont=False, decay_rate=0.8, decay_step=4, learning_rate=0.001, log_dir='log_30', max_epoch=32, model='mvvoxnet', momentum=0.9, num_classes=30, optimizer='adam', saved_fname=Path(u'weight30'), testing_fname=Path(u'shapenet30_test.tar'), training_fname=Path(u'shapenet30_train.tar'))
+
+-----------------------------------
+Epoch: [1/32]
+	Iter [100/732] Loss: 2.9927
+	Iter [200/732] Loss: 2.2509
+	Iter [300/732] Loss: 1.7659
+	Iter [400/732] Loss: 1.5725
+	Iter [500/732] Loss: 1.5000
+	Iter [600/732] Loss: 1.3567
+	Iter [700/732] Loss: 1.2849
+Train Accuracy 49.15
+Time taken: 20.19 sec.
+
+Evaluation:
+	Val Acc: 70.64 - Loss: 1.0419
+	Current best val acc: 0.00
+	Saving checkpoint - Acc: 70.64
+
+-----------------------------------
+Epoch: [2/32]
+	Iter [100/732] Loss: 1.1035
+	Iter [200/732] Loss: 1.1248
+	Iter [300/732] Loss: 0.9418
+	Iter [400/732] Loss: 0.9804
+	Iter [500/732] Loss: 0.9399
+	Iter [600/732] Loss: 0.9389
+	Iter [700/732] Loss: 0.9232
+Train Accuracy 70.10
+Time taken: 22.41 sec.
+
+Evaluation:
+	Val Acc: 82.37 - Loss: 0.6602
+	Current best val acc: 70.64
+	Saving checkpoint - Acc: 82.37
+
+-----------------------------------
+Epoch: [3/32]
+	Iter [100/732] Loss: 0.8426
+	Iter [200/732] Loss: 0.7953
+	Iter [300/732] Loss: 0.8579
+	Iter [400/732] Loss: 0.7331
+	Iter [500/732] Loss: 0.6970
+	Iter [600/732] Loss: 0.8475
+	Iter [700/732] Loss: 0.6829
+Train Accuracy 76.26
+Time taken: 22.65 sec.
+
+Evaluation:
+	Val Acc: 81.15 - Loss: 0.6639
+	Current best val acc: 82.37
+
+-----------------------------------
+Epoch: [4/32]
+	Iter [100/732] Loss: 0.7299
+	Iter [200/732] Loss: 0.6175
+	Iter [300/732] Loss: 0.7227
+	Iter [400/732] Loss: 0.7510
+	Iter [500/732] Loss: 0.6076
+	Iter [600/732] Loss: 0.6289
+	Iter [700/732] Loss: 0.6711
+Train Accuracy 78.65
+Time taken: 22.65 sec.
+
+Evaluation:
+	Val Acc: 85.32 - Loss: 0.5631
+	Current best val acc: 82.37
+	Saving checkpoint - Acc: 85.32
+
+-----------------------------------
+Epoch: [5/32]
+	Iter [100/732] Loss: 0.5703
+	Iter [200/732] Loss: 0.5348
+	Iter [300/732] Loss: 0.5469
+	Iter [400/732] Loss: 0.5143
+	Iter [500/732] Loss: 0.6050
+	Iter [600/732] Loss: 0.5413
+	Iter [700/732] Loss: 0.5300
+Train Accuracy 82.24
+Time taken: 22.61 sec.
+
+Evaluation:
+	Val Acc: 84.94 - Loss: 0.5178
+	Current best val acc: 85.32
+
+-----------------------------------
+Epoch: [6/32]
+	Iter [100/732] Loss: 0.5013
+	Iter [200/732] Loss: 0.4777
+	Iter [300/732] Loss: 0.5069
+	Iter [400/732] Loss: 0.4656
+	Iter [500/732] Loss: 0.4483
+	Iter [600/732] Loss: 0.5100
+	Iter [700/732] Loss: 0.5072
+Train Accuracy 83.64
+Time taken: 22.63 sec.
+
+Evaluation:
+	Val Acc: 85.51 - Loss: 0.5296
+	Current best val acc: 85.32
+	Saving checkpoint - Acc: 85.51
+
+-----------------------------------
+Epoch: [7/32]
+	Iter [100/732] Loss: 0.4214
+	Iter [200/732] Loss: 0.4562
+	Iter [300/732] Loss: 0.4841
+	Iter [400/732] Loss: 0.4161
+	Iter [500/732] Loss: 0.4299
+	Iter [600/732] Loss: 0.4304
+	Iter [700/732] Loss: 0.4851
+Train Accuracy 84.53
+Time taken: 22.64 sec.
+
+Evaluation:
+	Val Acc: 85.32 - Loss: 0.5034
+	Current best val acc: 85.51
+
+-----------------------------------
+Epoch: [8/32]
+	Iter [100/732] Loss: 0.3703
+	Iter [200/732] Loss: 0.3966
+	Iter [300/732] Loss: 0.4332
+	Iter [400/732] Loss: 0.3908
+	Iter [500/732] Loss: 0.4534
+	Iter [600/732] Loss: 0.3563
+	Iter [700/732] Loss: 0.4071
+Train Accuracy 86.36
+Time taken: 22.51 sec.
+
+Evaluation:
+	Val Acc: 86.41 - Loss: 0.5209
+	Current best val acc: 85.51
+	Saving checkpoint - Acc: 86.41
+
+-----------------------------------
+Epoch: [9/32]
+	Iter [100/732] Loss: 0.3701
+	Iter [200/732] Loss: 0.3350
+	Iter [300/732] Loss: 0.3117
+	Iter [400/732] Loss: 0.3268
+	Iter [500/732] Loss: 0.3464
+	Iter [600/732] Loss: 0.3293
+	Iter [700/732] Loss: 0.3203
+Train Accuracy 88.49
+Time taken: 22.53 sec.
+
+Evaluation:
+	Val Acc: 85.96 - Loss: 0.5281
+	Current best val acc: 86.41
+
+-----------------------------------
+Epoch: [10/32]
+	Iter [100/732] Loss: 0.3073
+	Iter [200/732] Loss: 0.2609
+	Iter [300/732] Loss: 0.3465
+	Iter [400/732] Loss: 0.3159
+	Iter [500/732] Loss: 0.2793
+	Iter [600/732] Loss: 0.3444
+	Iter [700/732] Loss: 0.2979
+Train Accuracy 89.05
+Time taken: 22.54 sec.
+
+Evaluation:
+	Val Acc: 87.05 - Loss: 0.5236
+	Current best val acc: 86.41
+	Saving checkpoint - Acc: 87.05
+
+-----------------------------------
+Epoch: [11/32]
+	Iter [100/732] Loss: 0.2790
+	Iter [200/732] Loss: 0.2780
+	Iter [300/732] Loss: 0.3059
+	Iter [400/732] Loss: 0.2995
+	Iter [500/732] Loss: 0.3136
+	Iter [600/732] Loss: 0.2975
+	Iter [700/732] Loss: 0.3272
+Train Accuracy 89.38
+Time taken: 22.55 sec.
+
+Evaluation:
+	Val Acc: 85.58 - Loss: 0.5501
+	Current best val acc: 87.05
+
+-----------------------------------
+Epoch: [12/32]
+	Iter [100/732] Loss: 0.2871
+	Iter [200/732] Loss: 0.2423
+	Iter [300/732] Loss: 0.2675
+	Iter [400/732] Loss: 0.3016
+	Iter [500/732] Loss: 0.2642
+	Iter [600/732] Loss: 0.3378
+	Iter [700/732] Loss: 0.2499
+Train Accuracy 89.75
+Time taken: 22.63 sec.
+
+Evaluation:
+	Val Acc: 87.05 - Loss: 0.5746
+	Current best val acc: 87.05
+
+-----------------------------------
+Epoch: [13/32]
+	Iter [100/732] Loss: 0.2556
+	Iter [200/732] Loss: 0.2137
+	Iter [300/732] Loss: 0.2079
+	Iter [400/732] Loss: 0.2347
+	Iter [500/732] Loss: 0.2187
+	Iter [600/732] Loss: 0.2551
+	Iter [700/732] Loss: 0.2944
+Train Accuracy 91.44
+Time taken: 22.61 sec.
+
+Evaluation:
+	Val Acc: 86.92 - Loss: 0.5413
+	Current best val acc: 87.05
+
+-----------------------------------
+Epoch: [14/32]
+	Iter [100/732] Loss: 0.2183
+	Iter [200/732] Loss: 0.2150
+	Iter [300/732] Loss: 0.1960
+	Iter [400/732] Loss: 0.2209
+	Iter [500/732] Loss: 0.2361
+	Iter [600/732] Loss: 0.1668
+	Iter [700/732] Loss: 0.2354
+Train Accuracy 92.26
+Time taken: 22.48 sec.
+
+Evaluation:
+	Val Acc: 87.95 - Loss: 0.5327
+	Current best val acc: 87.05
+	Saving checkpoint - Acc: 87.95
+
+-----------------------------------
+Epoch: [15/32]
+	Iter [100/732] Loss: 0.1792
+	Iter [200/732] Loss: 0.1871
+	Iter [300/732] Loss: 0.2147
+	Iter [400/732] Loss: 0.1607
+	Iter [500/732] Loss: 0.2435
+	Iter [600/732] Loss: 0.2125
+	Iter [700/732] Loss: 0.1990
+Train Accuracy 92.50
+Time taken: 22.41 sec.
+
+Evaluation:
+	Val Acc: 86.92 - Loss: 0.5695
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [16/32]
+	Iter [100/732] Loss: 0.1934
+	Iter [200/732] Loss: 0.2042
+	Iter [300/732] Loss: 0.2124
+	Iter [400/732] Loss: 0.2024
+	Iter [500/732] Loss: 0.1609
+	Iter [600/732] Loss: 0.1997
+	Iter [700/732] Loss: 0.2114
+Train Accuracy 92.76
+Time taken: 22.70 sec.
+
+Evaluation:
+	Val Acc: 87.56 - Loss: 0.5822
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [17/32]
+	Iter [100/732] Loss: 0.1964
+	Iter [200/732] Loss: 0.1781
+	Iter [300/732] Loss: 0.1715
+	Iter [400/732] Loss: 0.1779
+	Iter [500/732] Loss: 0.1884
+	Iter [600/732] Loss: 0.1748
+	Iter [700/732] Loss: 0.1892
+Train Accuracy 93.31
+Time taken: 22.70 sec.
+
+Evaluation:
+	Val Acc: 87.69 - Loss: 0.5573
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [18/32]
+	Iter [100/732] Loss: 0.1828
+	Iter [200/732] Loss: 0.1771
+	Iter [300/732] Loss: 0.1544
+	Iter [400/732] Loss: 0.1850
+	Iter [500/732] Loss: 0.1825
+	Iter [600/732] Loss: 0.1781
+	Iter [700/732] Loss: 0.1543
+Train Accuracy 93.66
+Time taken: 22.42 sec.
+
+Evaluation:
+	Val Acc: 87.37 - Loss: 0.6060
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [19/32]
+	Iter [100/732] Loss: 0.1426
+	Iter [200/732] Loss: 0.1405
+	Iter [300/732] Loss: 0.1336
+	Iter [400/732] Loss: 0.1517
+	Iter [500/732] Loss: 0.1529
+	Iter [600/732] Loss: 0.1484
+	Iter [700/732] Loss: 0.1667
+Train Accuracy 94.40
+Time taken: 22.65 sec.
+
+Evaluation:
+	Val Acc: 87.05 - Loss: 0.6328
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [20/32]
+	Iter [100/732] Loss: 0.1335
+	Iter [200/732] Loss: 0.1587
+	Iter [300/732] Loss: 0.1596
+	Iter [400/732] Loss: 0.1986
+	Iter [500/732] Loss: 0.1343
+	Iter [600/732] Loss: 0.1649
+	Iter [700/732] Loss: 0.1244
+Train Accuracy 94.30
+Time taken: 22.53 sec.
+
+Evaluation:
+	Val Acc: 86.54 - Loss: 0.6864
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [21/32]
+	Iter [100/732] Loss: 0.1873
+	Iter [200/732] Loss: 0.1173
+	Iter [300/732] Loss: 0.1272
+	Iter [400/732] Loss: 0.1247
+	Iter [500/732] Loss: 0.1409
+	Iter [600/732] Loss: 0.1262
+	Iter [700/732] Loss: 0.1447
+Train Accuracy 94.50
+Time taken: 22.62 sec.
+
+Evaluation:
+	Val Acc: 87.44 - Loss: 0.6610
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [22/32]
+	Iter [100/732] Loss: 0.1352
+	Iter [200/732] Loss: 0.1301
+	Iter [300/732] Loss: 0.1277
+	Iter [400/732] Loss: 0.1315
+	Iter [500/732] Loss: 0.1056
+	Iter [600/732] Loss: 0.1415
+	Iter [700/732] Loss: 0.1342
+Train Accuracy 94.86
+Time taken: 22.65 sec.
+
+Evaluation:
+	Val Acc: 87.31 - Loss: 0.6470
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [23/32]
+	Iter [100/732] Loss: 0.1299
+	Iter [200/732] Loss: 0.1370
+	Iter [300/732] Loss: 0.1042
+	Iter [400/732] Loss: 0.0937
+	Iter [500/732] Loss: 0.1455
+	Iter [600/732] Loss: 0.1385
+	Iter [700/732] Loss: 0.1606
+Train Accuracy 95.00
+Time taken: 22.42 sec.
+
+Evaluation:
+	Val Acc: 87.56 - Loss: 0.6677
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [24/32]
+	Iter [100/732] Loss: 0.1067
+	Iter [200/732] Loss: 0.1454
+	Iter [300/732] Loss: 0.1131
+	Iter [400/732] Loss: 0.1183
+	Iter [500/732] Loss: 0.1274
+	Iter [600/732] Loss: 0.1472
+	Iter [700/732] Loss: 0.1341
+Train Accuracy 94.88
+Time taken: 22.61 sec.
+
+Evaluation:
+	Val Acc: 87.37 - Loss: 0.6667
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [25/32]
+	Iter [100/732] Loss: 0.1261
+	Iter [200/732] Loss: 0.1290
+	Iter [300/732] Loss: 0.1207
+	Iter [400/732] Loss: 0.1031
+	Iter [500/732] Loss: 0.0983
+	Iter [600/732] Loss: 0.1206
+	Iter [700/732] Loss: 0.1161
+Train Accuracy 95.37
+Time taken: 22.43 sec.
+
+Evaluation:
+	Val Acc: 86.73 - Loss: 0.6925
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [26/32]
+	Iter [100/732] Loss: 0.1171
+	Iter [200/732] Loss: 0.1298
+	Iter [300/732] Loss: 0.1022
+	Iter [400/732] Loss: 0.1174
+	Iter [500/732] Loss: 0.0991
+	Iter [600/732] Loss: 0.0794
+	Iter [700/732] Loss: 0.1221
+Train Accuracy 95.61
+Time taken: 22.68 sec.
+
+Evaluation:
+	Val Acc: 87.56 - Loss: 0.7145
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [27/32]
+	Iter [100/732] Loss: 0.1011
+	Iter [200/732] Loss: 0.1217
+	Iter [300/732] Loss: 0.1196
+	Iter [400/732] Loss: 0.1093
+	Iter [500/732] Loss: 0.1214
+	Iter [600/732] Loss: 0.0907
+	Iter [700/732] Loss: 0.1235
+Train Accuracy 95.46
+Time taken: 22.53 sec.
+
+Evaluation:
+	Val Acc: 87.56 - Loss: 0.7023
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [28/32]
+	Iter [100/732] Loss: 0.1128
+	Iter [200/732] Loss: 0.1097
+	Iter [300/732] Loss: 0.1230
+	Iter [400/732] Loss: 0.1269
+	Iter [500/732] Loss: 0.1202
+	Iter [600/732] Loss: 0.1022
+	Iter [700/732] Loss: 0.0988
+Train Accuracy 95.75
+Time taken: 22.76 sec.
+
+Evaluation:
+	Val Acc: 87.50 - Loss: 0.6740
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [29/32]
+	Iter [100/732] Loss: 0.0876
+	Iter [200/732] Loss: 0.0948
+	Iter [300/732] Loss: 0.1104
+	Iter [400/732] Loss: 0.0989
+	Iter [500/732] Loss: 0.1198
+	Iter [600/732] Loss: 0.1014
+	Iter [700/732] Loss: 0.0882
+Train Accuracy 95.87
+Time taken: 22.68 sec.
+
+Evaluation:
+	Val Acc: 87.50 - Loss: 0.7130
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [30/32]
+	Iter [100/732] Loss: 0.0842
+	Iter [200/732] Loss: 0.0758
+	Iter [300/732] Loss: 0.1288
+	Iter [400/732] Loss: 0.1025
+	Iter [500/732] Loss: 0.0803
+	Iter [600/732] Loss: 0.0869
+	Iter [700/732] Loss: 0.1051
+Train Accuracy 96.12
+Time taken: 22.65 sec.
+
+Evaluation:
+	Val Acc: 87.56 - Loss: 0.7116
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [31/32]
+	Iter [100/732] Loss: 0.0928
+	Iter [200/732] Loss: 0.0793
+	Iter [300/732] Loss: 0.0983
+	Iter [400/732] Loss: 0.1037
+	Iter [500/732] Loss: 0.0735
+	Iter [600/732] Loss: 0.0723
+	Iter [700/732] Loss: 0.0857
+Train Accuracy 96.74
+Time taken: 22.46 sec.
+
+Evaluation:
+	Val Acc: 87.37 - Loss: 0.7736
+	Current best val acc: 87.95
+
+-----------------------------------
+Epoch: [32/32]
+	Iter [100/732] Loss: 0.0957
+	Iter [200/732] Loss: 0.0802
+	Iter [300/732] Loss: 0.0981
+	Iter [400/732] Loss: 0.1115
+	Iter [500/732] Loss: 0.1021
+	Iter [600/732] Loss: 0.1056
+	Iter [700/732] Loss: 0.0882
+Train Accuracy 96.17
+Time taken: 22.52 sec.
+
+Evaluation:
+	Val Acc: 86.79 - Loss: 0.7390
+	Current best val acc: 87.95
