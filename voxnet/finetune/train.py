@@ -5,6 +5,8 @@ from torch.utils.data import DataLoader
 from torch.autograd import Variable
 import torchvision.transforms as transforms
 
+from sklearn.svm import SVC
+
 import imp
 import logging
 from path import Path
@@ -18,18 +20,14 @@ import argparse
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(os.path.dirname(BASE_DIR))
 sys.path.append(ROOT_DIR)
-from datasets.mvmodelnet import MVModelNet
+from datasets.modelnet import ModelNet
 
 def main(args):
-    global LOG_FOUT
-    LOG_FOUT = open(os.path.join(args.log_dir, 'log.txt'), 'w')
-    log_string(args)
-
     # load network
     print("loading module")
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     module = importlib.import_module("models."+args.model)
-    model = module.MVVoxNet(num_classes=args.num_classes, input_shape=(32,32,32))
+    model = module.VoxNet(num_classes=args.num_classes, input_shape=(32,32,32))
     model.to(device)
 
     # backup files
@@ -41,19 +39,22 @@ def main(args):
     #logging.info('logs will be saved to {}'.format(args.log_fname))
     #logger = Logger(args.log_fname, reinitialize=True)
     print("loading dataset")
-    dset_train = MVModelNet(os.path.join(ROOT_DIR, "data"), args.training_fname)
-    dset_test = MVModelNet(os.path.join(ROOT_DIR, "data"), args.testing_fname)
-    log_string('\ntrain dataset size: {}'.format(len(dset_train)))
-    log_string('\ntest dataset size: {}'.format(len(dset_test)))
-
+    dset_train = ModelNet(os.path.join(ROOT_DIR, "data"), args.training_fname)
+    dset_test = ModelNet(os.path.join(ROOT_DIR, "data"), args.testing_fname)
+    
     train_loader = DataLoader(dset_train, batch_size=args.batch_size, shuffle=True, num_workers=4)
     test_loader = DataLoader(dset_test, batch_size=args.batch_size, num_workers=4)
     
+    global LOG_FOUT
+    LOG_FOUT = open(os.path.join(args.log_dir, 'log.txt'), 'w')
+    log_string(args)
 
     start_epoch = 0
     best_acc = 0.
     if args.cont:
         start_epoch, best_acc = load_checkpoint(args, model)
+    start_epoch = 0
+    best_acc = 0.
     
     print("set optimizer")
     # set optimization methods
@@ -117,7 +118,19 @@ def load_checkpoint(args, model):
     best_acc = checkpoint['best_acc']
     start_epoch = checkpoint['epoch']
     model.body.load_state_dict(checkpoint['body'])
-    model.head.load_state_dict(checkpoint['head'])
+    # not loading all the weight for head
+    new_head_dict = model.head.state_dict()
+
+    original_head_dict = checkpoint['feat']
+    for k in original_head_dict:
+        if k in new_head_dict:
+            print("same weight:", k)
+        else:
+            print("discarded weight:", k)
+
+    original_head_dict = {k: v for k, v in original_head_dict.items() if k in new_head_dict}
+    new_head_dict.update(original_head_dict)
+    model.head.load_state_dict(new_head_dict)
 
     return start_epoch, best_acc
 
@@ -149,7 +162,7 @@ def train(loader, model, criterion, optimizer, device):
         loss.backward()
         optimizer.step()
 
-        log_iter = 100
+        log_iter = 1000
         if (i + 1) % log_iter == 0:
             log_string("\tIter [%d/%d] Loss: %.4f" % (i + 1, num_batch, total_loss/log_iter))
             total_loss = 0.
