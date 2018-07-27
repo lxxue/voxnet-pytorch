@@ -1,4 +1,4 @@
-CUDA_VISIBLE_DEVICES=1
+CUDA_VISIBLE_DEVICES=2
 for i in `seq 1 10`
 do
     python few_train.py \
@@ -8,7 +8,7 @@ do
     --log_dir log_few/log_$i \
     --num_classes 10 \
     --max_epoch 32 \
-    --batch_size 1 \
+    --batch_size 8 \
     --learning_rate 0.001 \
     --momentum 0.9 \
     --optimizer adam \

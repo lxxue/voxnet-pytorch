@@ -1,7 +1,7 @@
-CUDA_VISIBLE_DEVICES=1 \
+UDA_VISIBLE_DEVICES=2 \
     python train.py \
-    --training_fname shapenet10_train.tar \
-    --testing_fname shapenet10_test.tar \
+    --training_fname shapenet10_test.tar \
+    --testing_fname shapenet10_train.tar \
     --model feature \
     --log_dir log_10 \
     --num_classes 10 \
