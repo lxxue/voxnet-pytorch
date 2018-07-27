@@ -6,11 +6,11 @@ import sys
 import os
 import re
 
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(os.path.join(".."))
 #from utils import npytar
 from utils import npytar
 
-class ModelNet(Dataset):
+class fewModelNet(Dataset):
     def __init__(self, filedir, filename):
         reader = npytar.NpyTarReader(os.path.join(filedir, filename))
         temp_list = []
@@ -21,24 +21,41 @@ class ModelNet(Dataset):
         if len(temp_list) % 12 != 0:
             # assert is a statement in python2/3, not a function
             assert "some shapes might not have 12 views"
+        # pick all the examples 
         # b x v x c x d x d x d
-        self.data = np.zeros((len(temp_list)//12, 12, 1, 32, 32, 32), dtype=np.float32)
+        temp_data = np.zeros((len(temp_list)//12, 12, 1, 32, 32, 32), dtype=np.float32)
         # all view share the same label
-        self.label = np.zeros((len(temp_list)//12,), dtype=np.int)
+        temp_label = np.zeros((len(temp_list)//12,), dtype=np.int)
+
         # sort the file by its name
         # format: classnum.classname_idx.viewidx
         # exception: 001.2h31k8fak.viewidx
         temp_list.sort(key=lambda x: (int(x[1].split(".")[0]), x[1].split(".")[-2].split("_")[-1], int(x[1].split(".")[-1])))
         for idx, (arr, name) in enumerate(temp_list):
-            self.data[idx//12, idx%12, 0] = arr
+            temp_data[idx//12, idx%12, 0] = arr
             if idx % 12 == 0:
                 # assign label
                 # name: class_idx.fname.view_idx
-                self.label[idx//12] = int(name.split('.')[0])-1
+                temp_label[idx//12] = int(name.split('.')[0])-1
             else:
                 # check label consistency
-                assert self.label[idx//12]==(int(name.split('.')[0])-1), "label is inconsistent among different views for file {}, original label{}".format(name, self.label[idx//12])
+                assert temp_label[idx//12]==(int(name.split('.')[0])-1), "label is inconsistent among different views for file {}, original label{}".format(name, temp_label[idx//12])
         #finish loading all data
+        # select 9 shapes for each examples
+        # quite a stupid method since we can get 90 directly
+        self.data = np.zeros((90, 12, 1, 32, 32, 32), dtype=np.float32)
+        self.label = np.zeros((90,), dtype=np.int)
+        
+        for i in range(10):
+            index = (temp_label == i)
+            temp_class_len = sum(index)
+            #print(temp_class_len)
+            temp_class_data = temp_data[index]
+            rand_idx = np.random.choice(temp_class_len, 9, replace=False) 
+            #print(rand_idx)
+            self.data[i*9:i*9+9] = temp_class_data[rand_idx]
+            self.label[i*9:i*9+9] = i
+
     
     def __len__(self):
         return self.label.shape[0]*12
@@ -48,7 +65,7 @@ class ModelNet(Dataset):
 
 
 if __name__ == '__main__':
-    modelnet30 = ModelNet("../data", "shapenet10_test.tar")
+    modelnet30 = fewModelNet("../data", "shapenet10_test.tar")
     print(len(modelnet30))
-    print(modelnet30[123][0].shape, modelnet30[123][1])
-    print(np.mean(modelnet30[123][0][np.where(modelnet30[123][0]!=0)]))
+    print(modelnet30[80][0].shape, modelnet30[80][1])
+    print(np.mean(modelnet30[80][0][np.where(modelnet30[80][0]!=0)]))

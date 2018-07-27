@@ -18,18 +18,15 @@ import argparse
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(os.path.dirname(BASE_DIR))
 sys.path.append(ROOT_DIR)
-from datasets.mvmodelnet import MVModelNet
+from datasets.modelnet import ModelNet
+from datasets.fewmodelnet import fewModelNet
 
 def main(args):
-    global LOG_FOUT
-    LOG_FOUT = open(os.path.join(args.log_dir, 'log.txt'), 'w')
-    log_string(args)
-
     # load network
     print("loading module")
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     module = importlib.import_module("models."+args.model)
-    model = module.MVVoxNet(num_classes=args.num_classes, input_shape=(32,32,32))
+    model = module.VoxNet(num_classes=args.num_classes, input_shape=(32,32,32))
     model.to(device)
 
     # backup files
@@ -41,14 +38,17 @@ def main(args):
     #logging.info('logs will be saved to {}'.format(args.log_fname))
     #logger = Logger(args.log_fname, reinitialize=True)
     print("loading dataset")
-    dset_train = MVModelNet(os.path.join(ROOT_DIR, "data"), args.training_fname)
-    dset_test = MVModelNet(os.path.join(ROOT_DIR, "data"), args.testing_fname)
-    log_string('\ntrain dataset size: {}'.format(len(dset_train)))
-    log_string('\ntest dataset size: {}'.format(len(dset_test)))
+    dset_train = fewModelNet(os.path.join(ROOT_DIR, "data"), args.training_fname)
+    dset_test = ModelNet(os.path.join(ROOT_DIR, "data"), args.testing_fname)
+    print("train dataset size: {}".format(len(dset_train)))
+    print("test dataset size: {}".format(len(dset_test)))
 
     train_loader = DataLoader(dset_train, batch_size=args.batch_size, shuffle=True, num_workers=4)
     test_loader = DataLoader(dset_test, batch_size=args.batch_size, num_workers=4)
     
+    global LOG_FOUT
+    LOG_FOUT = open(os.path.join(args.log_dir, 'log.txt'), 'w')
+    log_string(args)
 
     start_epoch = 0
     best_acc = 0.
@@ -98,6 +98,10 @@ def main(args):
             }, os.path.join(args.log_dir, args.saved_fname+".pth.tar"))
 
     LOG_FOUT.close()
+    with open("log_best_acc.txt", "a") as f:
+        f.write("{}\n".format(best_acc))
+    with open("log_last_acc.txt", "a") as f:
+        f.write("{}\n".format(avg_test_acc))
     return
 
     
@@ -149,7 +153,7 @@ def train(loader, model, criterion, optimizer, device):
         loss.backward()
         optimizer.step()
 
-        log_iter = 100
+        log_iter = 1000
         if (i + 1) % log_iter == 0:
             log_string("\tIter [%d/%d] Loss: %.4f" % (i + 1, num_batch, total_loss/log_iter))
             total_loss = 0.
