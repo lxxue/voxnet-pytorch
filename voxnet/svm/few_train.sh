@@ -2,8 +2,8 @@ CUDA_VISIBLE_DEVICES=1
 for i in `seq 1 10`
 do
     python few_train.py \
-    --training_fname shapenet10_train.tar \
-    --testing_fname shapenet10_test.tar \
+    --training_fname shapenet10_test.tar \
+    --testing_fname shapenet10_train.tar \
     --model feature \
     --log_dir log_few/log_$i \
     --num_classes 10 \

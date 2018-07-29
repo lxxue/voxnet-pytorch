@@ -41,15 +41,9 @@ def main(args):
     print("loading dataset")
     dset_train = ModelNet(os.path.join(ROOT_DIR, "data"), args.training_fname)
     dset_test = ModelNet(os.path.join(ROOT_DIR, "data"), args.testing_fname)
-    print(len(dset_train))
-    print(len(dset_test))
     
-    # set shuffle to false since the label is not shuffle
-    # drop_last = False so every instance will be loaded
-    # batch_size = 1
-    print(args.batch_size)
-    train_loader = DataLoader(dset_train, batch_size=args.batch_size, num_workers=4, drop_last=False)
-    test_loader = DataLoader(dset_test, batch_size=args.batch_size, num_workers=4, drop_last=False)
+    train_loader = DataLoader(dset_train, batch_size=args.batch_size, shuffle=True, num_workers=4)
+    test_loader = DataLoader(dset_test, batch_size=args.batch_size, num_workers=4)
     
     global LOG_FOUT
     LOG_FOUT = open(os.path.join(args.log_dir, 'log.txt'), 'w')
@@ -59,87 +53,50 @@ def main(args):
     best_acc = 0.
     if args.cont:
         start_epoch, best_acc = load_checkpoint(args, model)
+    start_epoch = 0
+    best_acc = 0.
     
-    train_feature = np.zeros((len(dset_train), 128))
-    train_label = np.zeros((len(dset_train),), dtype=np.int)
-    test_feature = np.zeros((len(dset_test), 128))
-    test_label = np.zeros((len(dset_test),), dtype=np.int)
-    
-    model.eval()
-    # make sure batch size = 1
-    with torch.no_grad():
-        for i, (inputs, targets) in enumerate(train_loader):
-            inputs, targets = inputs.to(device), targets.to(device)
-            # compute output
-            outputs = model(inputs)
-            train_feature[i] = outputs
-            train_label[i] = targets
-
-        for i, (inputs, targets) in enumerate(test_loader):
-            inputs, targets = inputs.to(device), targets.to(device)
-            # compute output
-            outputs = model(inputs)
-            test_feature[i] = outputs
-            test_label[i] = targets
-
-
-    print(train_feature[-1])
-    print(train_label[-1])
-    print(test_feature[-1])
-    print(test_label[-1])
-
-    np.save(os.path.join(args.log_dir,"train_feature"), train_feature)
-    np.save(os.path.join(args.log_dir,"train_label"), train_label)
-    np.save(os.path.join(args.log_dir,"test_feature"), test_feature)
-    np.save(os.path.join(args.log_dir,"test_label"), test_label)
-    
-    svm = SVC(kernel='linear')
-    svm.fit(train_feature, train_label)
-    train_pred = svm.predict(train_feature)
-    test_pred = svm.predict(test_feature)
-    print(str(np.sum(train_pred == train_label) * 1.0 / train_feature.shape[0]))
-    print(str(np.sum(test_pred == test_label) * 1.0 / test_feature.shape[0]))
-    #print("set optimizer")
+    print("set optimizer")
     # set optimization methods
-    #criterion = nn.CrossEntropyLoss()
-    #optimizer = torch.optim.Adam(model.parameters(), lr=args.learning_rate)
-    #scheduler = torch.optim.lr_scheduler.StepLR(optimizer, args.decay_step, args.decay_rate)
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(model.parameters(), lr=args.learning_rate)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, args.decay_step, args.decay_rate)
 
-    #for epoch in range(start_epoch, args.max_epoch):
-    #    scheduler.step()
-    #    log_string('\n-----------------------------------')
-    #    log_string('Epoch: [%d/%d]' % (epoch+1, args.max_epoch))
-    #    start = time.time()
+    for epoch in range(start_epoch, args.max_epoch):
+        scheduler.step()
+        log_string('\n-----------------------------------')
+        log_string('Epoch: [%d/%d]' % (epoch+1, args.max_epoch))
+        start = time.time()
 
-    #    model.train()
-    #    train(train_loader, model, criterion, optimizer, device)
-    #    log_string('Time taken: %.2f sec.' % (time.time() - start))
+        model.train()
+        train(train_loader, model, criterion, optimizer, device)
+        log_string('Time taken: %.2f sec.' % (time.time() - start))
 
-    #    model.eval()
-    #    avg_test_acc, avg_loss = test(test_loader, model, criterion, optimizer, device)
+        model.eval()
+        avg_test_acc, avg_loss = test(test_loader, model, criterion, optimizer, device)
 
-    #    log_string('\nEvaluation:')
-    #    log_string('\tVal Acc: %.2f - Loss: %.4f' % (avg_test_acc, avg_loss))
-    #    log_string('\tCurrent best val acc: %.2f' % best_acc)
+        log_string('\nEvaluation:')
+        log_string('\tVal Acc: %.2f - Loss: %.4f' % (avg_test_acc, avg_loss))
+        log_string('\tCurrent best val acc: %.2f' % best_acc)
 
-    #    # Log epoch to tensorboard
-    #    # See log using: tensorboard --logdir='logs' --port=6006
-    #    #util.logEpoch(logger, resnet, epoch + 1, avg_loss, avg_test_acc)
+        # Log epoch to tensorboard
+        # See log using: tensorboard --logdir='logs' --port=6006
+        #util.logEpoch(logger, resnet, epoch + 1, avg_loss, avg_test_acc)
 
-    #    # Save model
-    #    if avg_test_acc > best_acc:
-    #        log_string('\tSaving checkpoint - Acc: %.2f' % avg_test_acc)
-    #        best_acc = avg_test_acc
-    #        best_loss = avg_loss
-    #        torch.save({
-    #            'epoch': epoch + 1,
-    #            #'state_dict': resnet.state_dict(),
-    #            'body': model.body.state_dict(),
-    #            'feat': model.head.state_dict(),
-    #            'acc': avg_test_acc,
-    #            'best_acc': best_acc,
-    #            'optimizer': optimizer.state_dict()
-    #        }, os.path.join(args.log_dir, args.saved_fname+".pth.tar"))
+        # Save model
+        if avg_test_acc > best_acc:
+            log_string('\tSaving checkpoint - Acc: %.2f' % avg_test_acc)
+            best_acc = avg_test_acc
+            best_loss = avg_loss
+            torch.save({
+                'epoch': epoch + 1,
+                #'state_dict': resnet.state_dict(),
+                'body': model.body.state_dict(),
+                'feat': model.head.state_dict(),
+                'acc': avg_test_acc,
+                'best_acc': best_acc,
+                'optimizer': optimizer.state_dict()
+            }, os.path.join(args.log_dir, args.saved_fname+".pth.tar"))
 
     LOG_FOUT.close()
     return

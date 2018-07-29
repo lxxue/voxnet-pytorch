@@ -1,4 +1,4 @@
-CUDA_VISIBLE_DEVICES=2 \
+CUDA_VISIBLE_DEVICES=3 \
     python train.py \
     --training_fname shapenet10_test.tar \
     --testing_fname shapenet10_train.tar \
@@ -6,7 +6,7 @@ CUDA_VISIBLE_DEVICES=2 \
     --log_dir log_10 \
     --num_classes 10 \
     --max_epoch 32 \
-    --batch_size 1 \
+    --batch_size 8 \
     --learning_rate 0.001 \
     --momentum 0.9 \
     --optimizer adam \
