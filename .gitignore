@@ -2,4 +2,6 @@
 data/*
 
 # ignore log files
-*log*/
+#*log*/
+
+# ignore saved weight

@@ -1,0 +1,297 @@
+Namespace(batch_size=8, ckpt_dir='log', ckpt_fname='model', cont=False, decay_rate=0.8, decay_step=4, learning_rate=0.001, log_dir='log_few_9', max_epoch=32, model='voxnet', momentum=0.9, num_classes=10, optimizer='adam', saved_fname=Path(u'weight10'), testing_fname=Path(u'shapenet10_train.tar'), training_fname=Path(u'shapenet10_test.tar'))
+
+-----------------------------------
+Epoch: [1/32]
+Train Accuracy 56.30
+Time taken: 1.08 sec.
+
+Evaluation:
+	Val Acc: 58.80 - Loss: 1.5937
+	Current best val acc: 0.00
+	Saving checkpoint - Acc: 58.80
+
+-----------------------------------
+Epoch: [2/32]
+Train Accuracy 85.93
+Time taken: 1.47 sec.
+
+Evaluation:
+	Val Acc: 65.64 - Loss: 1.4490
+	Current best val acc: 58.80
+	Saving checkpoint - Acc: 65.64
+
+-----------------------------------
+Epoch: [3/32]
+Train Accuracy 91.30
+Time taken: 1.46 sec.
+
+Evaluation:
+	Val Acc: 62.31 - Loss: 1.8048
+	Current best val acc: 65.64
+
+-----------------------------------
+Epoch: [4/32]
+Train Accuracy 95.00
+Time taken: 1.41 sec.
+
+Evaluation:
+	Val Acc: 70.53 - Loss: 2.1290
+	Current best val acc: 65.64
+	Saving checkpoint - Acc: 70.53
+
+-----------------------------------
+Epoch: [5/32]
+Train Accuracy 95.37
+Time taken: 1.44 sec.
+
+Evaluation:
+	Val Acc: 69.70 - Loss: 1.7885
+	Current best val acc: 70.53
+
+-----------------------------------
+Epoch: [6/32]
+Train Accuracy 97.04
+Time taken: 1.40 sec.
+
+Evaluation:
+	Val Acc: 68.60 - Loss: 2.2060
+	Current best val acc: 70.53
+
+-----------------------------------
+Epoch: [7/32]
+Train Accuracy 97.41
+Time taken: 1.40 sec.
+
+Evaluation:
+	Val Acc: 70.67 - Loss: 2.3053
+	Current best val acc: 70.53
+	Saving checkpoint - Acc: 70.67
+
+-----------------------------------
+Epoch: [8/32]
+Train Accuracy 98.24
+Time taken: 1.43 sec.
+
+Evaluation:
+	Val Acc: 71.51 - Loss: 2.3868
+	Current best val acc: 70.67
+	Saving checkpoint - Acc: 71.51
+
+-----------------------------------
+Epoch: [9/32]
+Train Accuracy 98.61
+Time taken: 1.39 sec.
+
+Evaluation:
+	Val Acc: 70.92 - Loss: 2.4706
+	Current best val acc: 71.51
+
+-----------------------------------
+Epoch: [10/32]
+Train Accuracy 99.07
+Time taken: 1.41 sec.
+
+Evaluation:
+	Val Acc: 70.40 - Loss: 2.5493
+	Current best val acc: 71.51
+
+-----------------------------------
+Epoch: [11/32]
+Train Accuracy 99.44
+Time taken: 1.40 sec.
+
+Evaluation:
+	Val Acc: 71.58 - Loss: 2.8134
+	Current best val acc: 71.51
+	Saving checkpoint - Acc: 71.58
+
+-----------------------------------
+Epoch: [12/32]
+Train Accuracy 98.98
+Time taken: 1.42 sec.
+
+Evaluation:
+	Val Acc: 70.58 - Loss: 2.7988
+	Current best val acc: 71.58
+
+-----------------------------------
+Epoch: [13/32]
+Train Accuracy 99.07
+Time taken: 1.42 sec.
+
+Evaluation:
+	Val Acc: 70.00 - Loss: 2.9164
+	Current best val acc: 71.58
+
+-----------------------------------
+Epoch: [14/32]
+Train Accuracy 99.81
+Time taken: 1.36 sec.
+
+Evaluation:
+	Val Acc: 70.36 - Loss: 3.2128
+	Current best val acc: 71.58
+
+-----------------------------------
+Epoch: [15/32]
+Train Accuracy 99.54
+Time taken: 1.42 sec.
+
+Evaluation:
+	Val Acc: 71.57 - Loss: 3.1704
+	Current best val acc: 71.58
+
+-----------------------------------
+Epoch: [16/32]
+Train Accuracy 99.63
+Time taken: 1.44 sec.
+
+Evaluation:
+	Val Acc: 71.71 - Loss: 3.1335
+	Current best val acc: 71.58
+	Saving checkpoint - Acc: 71.71
+
+-----------------------------------
+Epoch: [17/32]
+Train Accuracy 99.44
+Time taken: 1.17 sec.
+
+Evaluation:
+	Val Acc: 69.59 - Loss: 3.4381
+	Current best val acc: 71.71
+
+-----------------------------------
+Epoch: [18/32]
+Train Accuracy 99.81
+Time taken: 1.41 sec.
+
+Evaluation:
+	Val Acc: 70.02 - Loss: 3.5570
+	Current best val acc: 71.71
+
+-----------------------------------
+Epoch: [19/32]
+Train Accuracy 99.72
+Time taken: 1.37 sec.
+
+Evaluation:
+	Val Acc: 69.35 - Loss: 3.6136
+	Current best val acc: 71.71
+
+-----------------------------------
+Epoch: [20/32]
+Train Accuracy 99.26
+Time taken: 1.41 sec.
+
+Evaluation:
+	Val Acc: 70.13 - Loss: 3.4724
+	Current best val acc: 71.71
+
+-----------------------------------
+Epoch: [21/32]
+Train Accuracy 99.81
+Time taken: 1.43 sec.
+
+Evaluation:
+	Val Acc: 71.03 - Loss: 3.5710
+	Current best val acc: 71.71
+
+-----------------------------------
+Epoch: [22/32]
+Train Accuracy 99.72
+Time taken: 1.42 sec.
+
+Evaluation:
+	Val Acc: 73.27 - Loss: 3.3790
+	Current best val acc: 71.71
+	Saving checkpoint - Acc: 73.27
+
+-----------------------------------
+Epoch: [23/32]
+Train Accuracy 99.91
+Time taken: 1.41 sec.
+
+Evaluation:
+	Val Acc: 71.35 - Loss: 3.6443
+	Current best val acc: 73.27
+
+-----------------------------------
+Epoch: [24/32]
+Train Accuracy 99.81
+Time taken: 1.36 sec.
+
+Evaluation:
+	Val Acc: 71.42 - Loss: 3.8033
+	Current best val acc: 73.27
+
+-----------------------------------
+Epoch: [25/32]
+Train Accuracy 99.91
+Time taken: 1.42 sec.
+
+Evaluation:
+	Val Acc: 72.49 - Loss: 3.8310
+	Current best val acc: 73.27
+
+-----------------------------------
+Epoch: [26/32]
+Train Accuracy 99.81
+Time taken: 1.41 sec.
+
+Evaluation:
+	Val Acc: 71.09 - Loss: 3.8182
+	Current best val acc: 73.27
+
+-----------------------------------
+Epoch: [27/32]
+Train Accuracy 99.81
+Time taken: 1.36 sec.
+
+Evaluation:
+	Val Acc: 71.69 - Loss: 3.8880
+	Current best val acc: 73.27
+
+-----------------------------------
+Epoch: [28/32]
+Train Accuracy 99.91
+Time taken: 1.41 sec.
+
+Evaluation:
+	Val Acc: 71.81 - Loss: 3.8022
+	Current best val acc: 73.27
+
+-----------------------------------
+Epoch: [29/32]
+Train Accuracy 100.00
+Time taken: 1.41 sec.
+
+Evaluation:
+	Val Acc: 72.57 - Loss: 3.7706
+	Current best val acc: 73.27
+
+-----------------------------------
+Epoch: [30/32]
+Train Accuracy 99.81
+Time taken: 1.38 sec.
+
+Evaluation:
+	Val Acc: 69.99 - Loss: 3.9391
+	Current best val acc: 73.27
+
+-----------------------------------
+Epoch: [31/32]
+Train Accuracy 100.00
+Time taken: 1.39 sec.
+
+Evaluation:
+	Val Acc: 71.16 - Loss: 3.9075
+	Current best val acc: 73.27
+
+-----------------------------------
+Epoch: [32/32]
+Train Accuracy 100.00
+Time taken: 1.43 sec.
+
+Evaluation:
+	Val Acc: 71.14 - Loss: 4.0123
+	Current best val acc: 73.27
