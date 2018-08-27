@@ -2,6 +2,10 @@
 data/*
 
 # ignore log files
-#*log*/
+*log*/
 
 # ignore saved weight
+*.pth.tar
+
+# ignore .pyc
+*.pyc

@@ -1,3 +1,0 @@
-Namespace(batch_size=1, ckpt_dir='../baseline/log_30/', ckpt_fname='weight30', cont=True, decay_rate=0.8, decay_step=4, learning_rate=0.001, log_dir='log_few/log_10', max_epoch=32, model='feature', momentum=0.9, num_classes=10, optimizer='adam', saved_fname=Path(u'weight10'), testing_fname=Path(u'shapenet10_test.tar'), training_fname=Path(u'shapenet10_train.tar'))
-1.0
-0.730359765051395
